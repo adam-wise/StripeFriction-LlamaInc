@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llama Inc - Tractor Rental Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <div class="logo">
+                    <h1>🦙 Llama Inc</h1>
+                </div>
+                <div class="contact-info">
+                    <a href="tel:+1-555-TRACTORS" class="phone-link">(555) TRACTORS</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Rent Tractors From Local Farmers</h1>
+                    <p class="hero-subtitle">The peer-to-peer marketplace connecting farmers across the US. Get the equipment you need when you need it, from neighbors you can trust.</p>
+                    <div class="hero-booking">
+                        <form id="bookingForm" class="booking-form hero-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="rentalDays">Duration</label>
+                                    <select id="rentalDays" name="rentalDays" required>
+                                        <option value="">Select nights</option>
+                                        <option value="1">1 Night</option>
+                                        <option value="2">2 Nights</option>
+                                        <option value="3">3 Nights</option>
+                                        <option value="4">4 Nights</option>
+                                        <option value="5">5 Nights</option>
+                                        <option value="6">6 Nights</option>
+                                        <option value="7">7 Nights</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="rentalDate">Start Date</label>
+                                    <input type="date" id="rentalDate" name="rentalDate" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" id="location" name="location" placeholder="City, State" required>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="cta-button large hero-button" id="bookNowBtn">
+                                Book Now - See Pricing in Checkout
+                            </button>
+                        </form>
+                        <p class="hero-phone">Need help? Call <a href="tel:+1-555-TRACTORS">(555) TRACTORS</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose Llama Inc?</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🚜</div>
+                        <h3>Quality Tractors</h3>
+                        <p>Access well-maintained tractors from trusted local farmers in your area.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📍</div>
+                        <h3>Local Network</h3>
+                        <p>Rent from farmers nearby to minimize transport costs and support your community.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <h3>Fair Pricing</h3>
+                        <p>Competitive rates that work for both renters and equipment owners.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📞</div>
+                        <h3>Simple Process</h3>
+                        <p>One phone call connects you with available tractors in your area.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Call Us</h3>
+                        <p>Tell us what tractor you need and when you need it.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>We Match You</h3>
+                        <p>We connect you with local farmers who have available equipment.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Rent & Farm</h3>
+                        <p>Pick up the tractor and get your work done efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="future">
+            <div class="container">
+                <div class="future-content">
+                    <h2>Coming Soon: Complete Farm Equipment Marketplace</h2>
+                    <p>We're expanding beyond tractors to include all heavy farming machinery. Harvesters, plows, seeders, and more - all available through our trusted peer-to-peer network.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Need Help or Prefer to Call?</h2>
+                    <p>Our team is standing by to assist with your tractor rental needs</p>
+                    <a href="tel:+1-555-TRACTORS" class="cta-button large">Call (555) TRACTORS</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>🦙 Llama Inc</h3>
+                    <p>Connecting farmers. Sharing equipment. Growing together.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Phone: <a href="tel:+1-555-TRACTORS">(555) TRACTORS</a></p>
+                    <p>Serving farmers across the United States</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Llama Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="booking.js"></script>
+</body>
+</html>
