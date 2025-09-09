@@ -1,5 +1,6 @@
+require('dotenv').config();
 const express = require('express');
-const stripe = require('stripe')('sk_test_your_secret_key_here'); // Replace with your secret key
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const path = require('path');
 
 const app = express();
@@ -129,7 +130,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
     let event;
     
     try {
-        event = stripe.webhooks.constructEvent(req.body, sig, 'whsec_your_webhook_secret');
+        event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
     } catch (err) {
         console.log(`Webhook signature verification failed.`, err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -158,6 +159,13 @@ app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
 // Serve static files
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Add endpoint to serve Stripe publishable key to frontend
+app.get('/config', (req, res) => {
+    res.json({
+        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
+    });
 });
 
 const port = process.env.PORT || 3000;

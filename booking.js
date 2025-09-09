@@ -1,5 +1,15 @@
-// Stripe Configuration - Replace with your actual publishable key
-const stripe = Stripe('pk_test_your_publishable_key_here');
+// Stripe Configuration - Load from server
+let stripe;
+
+// Initialize Stripe with publishable key from server
+fetch('/config')
+    .then(response => response.json())
+    .then(config => {
+        stripe = Stripe(config.publishableKey);
+    })
+    .catch(error => {
+        console.error('Failed to load Stripe configuration:', error);
+    });
 
 // A/B Testing Configuration
 const PRICE_SETS = {
@@ -102,6 +112,10 @@ bookingForm.addEventListener('submit', async (e) => {
         }
         
         // Redirect to Stripe Checkout
+        if (!stripe) {
+            throw new Error('Stripe not initialized');
+        }
+        
         const result = await stripe.redirectToCheckout({
             sessionId: session.id
         });
