@@ -10,14 +10,14 @@ app.use(express.static('.'));
 // A/B Testing Price Configuration
 const STRIPE_PRICES = {
     A: {
-        firstNight: 'price_control_first_night',      // Create in Stripe: $400
-        additionalNight: 'price_control_additional_night', // Create in Stripe: $50
+        firstNight: 'price_1S5airBJSIgLg9XSJZPB7nUw',      // Create in Stripe: $400
+        additionalNight: 'price_1S5ajZBJSIgLg9XSvhp9p0HW', // Create in Stripe: $50
         platformFeeRate: 0.15,
         depositRate: 0.20
     },
     B: {
-        firstNight: 'price_test_first_night',         // Create in Stripe: $350  
-        additionalNight: 'price_test_additional_night',    // Create in Stripe: $60
+        firstNight: 'price_1S5akFBJSIgLg9XSIoHwpGq6',         // Create in Stripe: $350  
+        additionalNight: 'price_1S5akdBJSIgLg9XSnafCtkNb',    // Create in Stripe: $60
         platformFeeRate: 0.18,
         depositRate: 0.15
     }
@@ -102,6 +102,14 @@ app.post('/create-checkout-session', async (req, res) => {
                 platformFee: platformFee.toString(),
                 deposit: deposit.toString(),
                 total: (preTotal + deposit).toString()
+            },
+            consent_collection: {
+                terms_of_service: 'required'
+            },
+            custom_text: {
+                terms_of_service_acceptance: {
+                message: 'I agree to the [Liability Waiver](https://your-website.com/liability-waiver)'
+                }
             },
             customer_creation: 'always',
             invoice_creation: {
